@@ -9,6 +9,8 @@ Here's the English translation of your README:
 **Platform:** Windows  
 **Language:** Batch Script
 
+[**Russian README**](https://github.com/AtinsS/GitManager/blob/main/README.ru.md)
+
 ---
 
 ## 💭 Why I made it
