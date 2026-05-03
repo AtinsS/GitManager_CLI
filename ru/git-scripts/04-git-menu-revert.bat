@@ -41,7 +41,7 @@ if "%reset_action%"=="2" (
     if exist "%SCRIPT_DIR%13-git-revert.bat" (
         call "%SCRIPT_DIR%13-git-revert.bat"
     ) else (
-        echo %RED%    ❌ Скрипт 14-git-revert.bat не найден%RESET%
+        echo %RED%    ❌ Скрипт 13-git-revert.bat не найден%RESET%
         echo %WHITE%    Нажмите любую клавишу...%RESET%
         pause >nul
     )

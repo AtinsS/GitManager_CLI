@@ -1,155 +1,145 @@
 # 🚀 Git Manager
 
-> A simple tool for managing multiple Git repositories without unnecessary commands
+**Platform:** Windows only  
 
-**Platform:** Windows  
 **Language:** Batch Script
+[**Russian README**](https://github.com/AtinsS/GitManager/blob/main/README.ru.md)
 
 ---
 
-[Russian REDME](https://github.com/AtinsS/GitManager/blob/main/README.ru.md)
-## 💭 Why did I build this?
-I have multiple repositories and got tired of typing the same Git commands over and over:
+## 🚀 What is this?
+
+**Git Manager** is an interactive wrapper around Git that turns the complex CLI into a simple menu.
+
+Forget about:
+
 ```
 git add .
 git commit -m "fix"
 git push origin main
 ```
 
-I wanted something simple: open it, pick an action, and it just works.
-That's how **🚀 Git Manager** was born.
+Now — just pick an action.  
+**The tool does the rest.**
 
 ---
-### 🧑‍💻 This is for you if:
 
-- 📦 you juggle multiple repositories  
-- 😵 you're sick of typing the same Git commands  
-- ⚡ you want to commit + push in one click  
-- 🔘 you need to quickly update all your projects  
+## ⁉️ Why it’s convenient
+
+- ⚡ **Faster** — routine operations in a few clicks
+- 🧠 **Simpler** — no need to remember which hosting your repository is on
+- 📦 **More organized** — all repositories from different hostings in one place
+- 🎯 **More practical** — focus on code, not on pushing repos
 
 ---
+
 ## 🧰 Features
 
-- 📁 Manage multiple repositories
-- 📦 Organize projects into groups
-- ⬆️ Commit + Push in one action
-- ⬇️ Mass-update all repositories with a single button
-- 📊 Repository status right in the menu
-- 🌿 Branch management
-- 🔄 Clone / Pull / Push without CLI
+- 📁 Manage multiple repositories from different hostings
+- 📦 Group projects by categories
+- ⬆️ Commit + Push in a single action
+- 🆒 Mass update of all repositories with one button
+- 📊 View repository **status** and **hosting** right from the main menu
+- 🌿 Full branch management (create, switch)
+- 💘 Clone, create, or even initialize directly on GITHUB / GITLAB
 - 📜 View commit history (git log)
-- 🤖 Auto-commits on timer
-- 🌐 Multi-language support with auto-detection at launch (RU / EN)
+- 🤖 Automatic commits on a timer
+- 🌐 Automatic language detection (currently 2 languages: Russian and English)
 
 ---
 
-## ⚙️ Quick Start
+## 🧑‍💻 Who is this for?
+
+- Developers with multiple projects on different hostings
+- Those tired of the Git CLI
+- Beginners who want to quickly get up to speed with Git
+- Anyone who values their time
+
+---
+
+## ⚙️ Quick start
 
 1. Install [Git](https://git-scm.com/)
-    
 2. Download the project or clone the repository
-    
 3. Run: `GIT-MANAGER.BAT`
-
-4. Enjoy 🚀
+4. Enjoy
 
 ---
 
-## 🖥️ Interface
+## 🖥️ What it looks like
 
-### Main Menu
+### Main menu
 
 ```batch
-════════════════════════════════════════════════════════════
-                        GIT MANAGER  🚀
-                         by AtinsS
-════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════
+             GIT-MANAGER 🚀         by AtinsS
+═════════════════════════════════════════════════════════════
 
-▸ No repositories added
+▸ REPOSITORIES
+
+  ▸ Group: Homework
+ 1.  DataInApp              [dev]    [GitLab]      ● changes
+
+  ▸ Group: Pet projects
+ 2.  GIT-MANAGER-REPO       [main]   [GitHub]      ● changes
+ 3.  MySITE                 [dev]    [GitHub]      ● clean
+
+  ▸ Group: Tests (private)
+ 4.  FirsPrivateRepo        [main]   [GitHub]      ● clean
+ 5.  ForTests               [dev]    [GitLab]      ● clean  
 
 ════════════════════════════════════════════════════════════
 ▸ ACTIONS
-    [C] Clone         [A] Add         [U] Update all
-    [G] Groups        [D] Delete      [S] Settings
-    [X] Exit
+  [1-4]  Select
+════════════════════════════════════════════════════════════
+  [C] Clone repository
+  [A] Add repository
+
+  [G] Manage groups
+  [U] Update all repositories
+
+  [S] Settings
+  [D] Delete (repo will only be removed from manager)
+════════════════════════════════════════════════════════════
+  [X] Exit
 ════════════════════════════════════════════════════════════
 
   →
-
 ```
 
 ---
 
-### Working with Repositories
+### Actions inside a repository
 
 ```batch
-════════════════════════════════════════════════════════════
-                        GIT MANAGER  🚀
-                         by AtinsS
-════════════════════════════════════════════════════════════
 
-▸ Group: Group1
-  1. Repo1  [dev] ● clean
+  Repository: DataInApp  Hosting: [GitLab]  Branch: dev
+  Status: ⚠️ changes present
+  ═══════════════════════════════════════════════════════════
 
-▸ Group: Group2
-  2. Repo2  [main] ● changes
-  3. Repo3  [main] ● clean
-
-════════════════════════════════════════════════════════════
-▸ ACTIONS
-    [C] Clone         [A] Add         [U] Update all
-    [G] Groups        [D] Delete      [S] Settings
-    [X] Exit
-════════════════════════════════════════════════════════════
-
-  →
-
-```
-
----
-
-### Repository Actions Menu
-
-```batch
-  ════════════════════════════════════════════════════════════
-  Repository: Repo1  Branch: dev
-  Status: ✅ clean
-  ════════════════════════════════════════════════════════════
-
-  1. Git status (check current state)
-  2. Git pull (fetch updates)
-  3. Git add + commit + push (with message)
-  4. Open undo/rollback menu
+  1. Git status (check state)
+  2. Git pull (update)
+  3. Git add + commit + push (with comment)
+  4. Go to undo changes menu
   5. View history (git log)
   6. Git merge (merge branches)
   7. Git merge --abort (cancel merge)
-  8. Show available branches for merge
-  9. Create new branch
+  8. Show branches for merging
+  9. Create branch
   10. Switch branch
   11. Auto-commits (every N minutes)
-<<<<<<< HEAD
-  12. Back to main menu
-=======
-    0. Back to main menu
->>>>>>> 618255b0b7eab159e5a22125373da5a48e1f6bab
+   0. Back to main menu
 
  →
 ```
 
 ---
 
-### ❓ Why Batch Script?
-- no installation required
-- works out of the box
-- lightweight and fast
+## ☕ Support the developer
 
-___
-## ☕ Support the Developer
-
-If **Git Manager** saved you time or turned out to be useful, 
-and you'd like to support my work:
+If **Git Manager** saved you time and proved useful, you can support the project's development:
 
 - ⭐ Star the repository
-- ☕ [Buy me a coffee](https://pay.cloudtips.ru/p/cbaa3c81) 
+- ☕ [Buy me a coffee and a bun](https://pay.cloudtips.ru/p/cbaa3c81)
 
-Any support = more motivation to keep building and improving projects.
+Any support = more time for new projects.

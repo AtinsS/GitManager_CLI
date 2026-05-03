@@ -34,7 +34,7 @@ git branch -r 2>nul | findstr /v "HEAD" | findstr /v "->"
 
 echo.
 echo %WHITE%💡 Совет:%RESET%
-echo   Для слияния ветки в текущую используйте опцию "10" в главном меню
+echo   Для слияния ветки в текущую используйте опцию "6" в главном меню
 echo   или выполните команду: git merge ^<имя_ветки^>
 echo.
 pause
