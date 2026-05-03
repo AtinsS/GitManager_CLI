@@ -165,6 +165,7 @@ goto :%__MAIN_SCRIPT_ACTION%
   goto MANAGE_GROUPS
   
   :ADD_TO_GROUP
+<<<<<<< HEAD
 cls
 echo %BOLD%%CYAN%  📌 ДОБАВЛЕНИЕ В ГРУППУ%RESET%
 echo.
@@ -267,6 +268,165 @@ move /y "!temp_groups!" "%GROUPS_FILE%" >nul 2>&1
 echo %GREEN%  ✅ Репозиторий "%selected_repo%" добавлен в группу "%selected_group%"%RESET%
 pause
 goto MANAGE_GROUPS
+=======
+  cls
+  echo %BOLD%%CYAN%  📌 ДОБАВЛЕНИЕ В ГРУППУ%RESET%
+  echo.
+  
+  echo %BOLD%%WHITE%  Существующие группы:%RESET%
+  set group_count=0
+  if exist "%GROUPS_FILE%" (
+    for /f "usebackq tokens=1 delims=;" %%a in ("%GROUPS_FILE%") do (
+      if not "%%a"=="" (
+        set /a group_count+=1
+        set "group_name_!group_count!=%%a"
+        echo %GREEN%  !group_count!.%RESET% %%a
+      )
+    )
+    ) else (
+    echo %YELLOW%  Нет созданных групп%RESET%
+    pause
+    goto MANAGE_GROUPS
+  )
+  
+  if !group_count!==0 (
+    echo %YELLOW%  Нет созданных групп%RESET%
+    pause
+    goto MANAGE_GROUPS
+  )
+  
+  echo.
+  set /p "group_num=%BOLD%%WHITE%    ⚡ Выберите номер группы: %RESET%"
+  set "selected_group=!group_name_%group_num%!"
+  
+  echo.
+  echo %BOLD%%WHITE%  Репозитории не в группах:%RESET%
+  set repo_count=0
+  for /f "usebackq tokens=1,* delims=;" %%a in ("%CONFIG_FILE%") do (
+    set "in_group=0"
+    if exist "%GROUPS_FILE%" (
+      for /f "usebackq tokens=2 delims=;" %%g in ("%GROUPS_FILE%") do (
+        echo "%%g" | find "%%a" >nul 2>&1 && set "in_group=1"
+      )
+    )
+    if !in_group!==0 (
+      set /a repo_count+=1
+      set "repo_name_add_!repo_count!=%%a"
+      echo %GREEN%  !repo_count!.%RESET% %%a
+    )
+  )
+  
+  if !repo_count!==0 (
+    echo %YELLOW%  Нет репозиториев для добавления%RESET%
+    pause
+    goto MANAGE_GROUPS
+    ) else (
+    echo.
+    set /p "repo_num=%BOLD%%WHITE%    ⚡ Выберите номер репозитория: %RESET%"
+    set "selected_repo=!repo_name_add_%repo_num%!"
+  )
+  
+  set "temp_groups=%TEMP%\groups.tmp"
+  type nul > "!temp_groups!"
+  if exist "%GROUPS_FILE%" (
+    for /f "usebackq tokens=1,* delims=;" %%a in ("%GROUPS_FILE%") do (
+      if "%%a"=="!selected_group!" (
+        if "%%b"=="" (
+          echo %%a;!selected_repo!>> "!temp_groups!"
+          ) else (
+          echo %%a;%%b;!selected_repo!>> "!temp_groups!"
+        )
+        ) else (
+        echo %%a;%%b>> "!temp_groups!"
+      )
+    )
+    move /y "!temp_groups!" "%GROUPS_FILE%" >nul 2>&1
+  )
+  
+  echo %GREEN%  ✅ Репозиторий "%selected_repo%" добавлен в группу "%selected_group%"%RESET%
+  pause
+  goto MANAGE_GROUPS
+  
+  :REMOVE_FROM_GROUP
+  cls
+  echo %BOLD%%CYAN%  🗑️ УДАЛЕНИЕ ИЗ ГРУППЫ%RESET%
+  echo.
+  
+  echo %BOLD%%WHITE%  Группы и их репозитории:%RESET%
+  if exist "%GROUPS_FILE%" (
+    for /f "usebackq tokens=1,* delims=;" %%a in ("%GROUPS_FILE%") do (
+      echo %BOLD%%MAGENTA%  📁 %%a%RESET%
+      if not "%%b"=="" (
+        for %%r in (%%b) do (
+          echo %GREEN%  -%RESET% %%r
+        )
+        ) else (
+        echo %YELLOW%  пусто%RESET%
+      )
+    )
+    ) else (
+    echo %YELLOW%  Нет групп%RESET%
+    pause
+    goto MANAGE_GROUPS
+  )
+  
+  echo.
+  set /p "group_del=%BOLD%%WHITE%    Введите название группы: %RESET%"
+  set /p "repo_del=%BOLD%%WHITE%    Введите название репозитория для удаления: %RESET%"
+  
+  set "temp_groups=%TEMP%\groups.tmp"
+  type nul > "!temp_groups!"
+  if exist "%GROUPS_FILE%" (
+    for /f "usebackq tokens=1,* delims=;" %%a in ("%GROUPS_FILE%") do (
+      if "%%a"=="!group_del!" (
+        set "new_repo_list="
+        set "first=1"
+        for %%r in (%%b) do (
+          if not "%%r"=="!repo_del!" (
+            if !first!==1 (
+              set "new_repo_list=%%r"
+              set "first=0"
+              ) else (
+              set "new_repo_list=!new_repo_list!;%%r"
+            )
+          )
+        )
+        echo %%a;!new_repo_list!>> "!temp_groups!"
+        ) else (
+        echo %%a;%%b>> "!temp_groups!"
+      )
+    )
+    move /y "!temp_groups!" "%GROUPS_FILE%" >nul 2>&1
+  )
+  
+  echo %GREEN%  ✅ Репозиторий удален из группы%RESET%
+  pause
+  goto MANAGE_GROUPS
+  
+  :SHOW_GROUPS
+  cls
+  echo %BOLD%%CYAN%  📚 ВСЕ ГРУППЫ%RESET%
+  echo.
+  
+  if exist "%GROUPS_FILE%" (
+    for /f "usebackq tokens=1,* delims=;" %%a in ("%GROUPS_FILE%") do (
+      echo %BOLD%%MAGENTA%  [%%a]%RESET%
+      if not "%%b"=="" (
+        for %%r in (%%b) do (
+          echo %GREEN%  -%RESET% %%r
+        )
+        ) else (
+        echo %YELLOW%  пусто%RESET%
+      )
+      echo.
+    )
+    ) else (
+    echo %YELLOW%  Нет созданных групп%RESET%
+  )
+  
+  pause
+  goto MANAGE_GROUPS
+>>>>>>> e80729d99517f44b23d5675f76d91b041993a785
   
   :DELETE_GROUP
   cls
