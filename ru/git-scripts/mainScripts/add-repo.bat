@@ -59,12 +59,9 @@ pushd "!repo_path!" 2>nul || (
 )
 
 git status >nul 2>&1 && (
-<<<<<<< HEAD
   set "remote_url="
   for /f "delims=" %%u in ('git config --get remote.origin.url 2^>nul') do set "remote_url=%%u"
   call :DETECT_HOSTING
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
   for %%I in ("!repo_path!") do set "repo_name=%%~nxI"
   popd
   set /p "repo_name_input=%GREEN%    Имя в Git Manager [!repo_name!]: %RESET%"
@@ -74,11 +71,7 @@ git status >nul 2>&1 && (
     pause
     exit /b 0
   )
-<<<<<<< HEAD
   >> "%CONFIG_FILE%" echo(!repo_name!;!repo_path!;!remote_url!;!hosting!
-=======
-  echo !repo_name!;!repo_path! >> "%CONFIG_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
   echo %GREEN%  ✅ Репозиторий добавлен!%RESET%
   set /p "add_to_group=%YELLOW%    Добавить в группу? [y/n]: %RESET%"
   if /i "!add_to_group!"=="y" call "%MAIN_SCRIPTS_DIR%\groups.bat" ADD_REPO_TO_GROUP "!repo_name!"
@@ -155,11 +148,8 @@ if "!gh_available!"=="0" if "!glab_available!"=="0" (
 )
 
 :PLATFORM_CHOICE
-<<<<<<< HEAD
 set "remote_url="
 set "hosting=Local"
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
 cls
 echo %GREEN%  ✅ Введите данные репозитория%RESET%
 echo.
@@ -262,15 +252,12 @@ if !gh_result! equ 0 (
   echo %GREEN%  ✅ Репозиторий создан на GitHub!%RESET%
   REM Получаем URL
   for /f "delims=" %%u in ('gh repo view --json url --jq ".url" 2^>nul') do set "remote_url=%%u"
-<<<<<<< HEAD
   if not defined remote_url (
     pushd "!repo_path!" 2>nul && (
       for /f "delims=" %%u in ('git config --get remote.origin.url 2^>nul') do set "remote_url=%%u"
       popd
     )
   )
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
   if defined remote_url echo %WHITE%  URL: %CYAN%!remote_url!%RESET%
 ) else (
   set "platform=failed_github"
@@ -321,13 +308,9 @@ if !glab_result! equ 0 (
   set "remote_url="
   for /f "tokens=*" %%a in ('glab repo view 2^>nul') do (
     echo "%%a" | findstr /c:"HTTP URL:" >nul 2>&1 && (
-<<<<<<< HEAD
       set "remote_url=%%a"
       set "remote_url=!remote_url:*HTTP URL:=!"
       for /f "tokens=* delims= " %%u in ("!remote_url!") do set "remote_url=%%u"
-=======
-      for /f "tokens=2 delims=: " %%u in ("%%a") do set "remote_url=%%u"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     )
   )
   
@@ -377,12 +360,8 @@ if /i "!add_remote!"=="y" (
 :REMOTE_DONE
 cd /d "%ORIG_DIR%"
 
-<<<<<<< HEAD
 call :DETECT_HOSTING
 >> "%CONFIG_FILE%" echo(!repo_name!;!repo_path!;!remote_url!;!hosting!
-=======
-echo !repo_name!;!repo_path! >> "%CONFIG_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
 echo.
 echo %BOLD%%WHITE%  ═══════════════════════════════════%RESET%
 echo %WHITE%  Репозиторий: %GREEN%!repo_name!%RESET%
@@ -393,10 +372,7 @@ if "!platform!"=="local" echo %WHITE%  Тип: %YELLOW%Локальный%RESET%
 if "!platform!"=="failed_github" echo %WHITE%  Статус: %RED%GitHub ошибка, локальный создан%RESET%
 if "!platform!"=="failed_gitlab" echo %WHITE%  Статус: %RED%GitLab ошибка, локальный создан%RESET%
 if defined remote_url echo %WHITE%  URL: %CYAN%!remote_url!%RESET%
-<<<<<<< HEAD
 echo %WHITE%  Hosting: %CYAN%!hosting!%RESET%
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
 echo %BOLD%%WHITE%  ═══════════════════════════════════%RESET%
 echo.
 
@@ -721,7 +697,6 @@ where gh >nul 2>&1 && set "gh_available=1"
 where glab >nul 2>&1 && set "glab_available=1"
 exit /b 0
 
-<<<<<<< HEAD
 :DETECT_HOSTING
 set "hosting=Local"
 if not defined remote_url exit /b 0
@@ -737,6 +712,3 @@ if "!hosting!"=="Local" set "hosting=Other"
 exit /b 0
 
 endlocal
-=======
-endlocal
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785

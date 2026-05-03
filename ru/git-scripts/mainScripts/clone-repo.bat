@@ -22,12 +22,8 @@ setlocal enabledelayedexpansion
     exit /b 0
   )
   
-<<<<<<< HEAD
   call :DETECT_HOSTING
   >> "%CONFIG_FILE%" echo(!repo_name!;!full_path!;!repo_url!;!hosting!
-=======
-  echo %repo_name%;%full_path% >> "%CONFIG_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
   echo %GREEN%  ✅ Репозиторий успешно клонирован и добавлен в список!%RESET%
   
   :: Спрашиваем про группу
@@ -39,7 +35,6 @@ setlocal enabledelayedexpansion
   
   pause
   exit /b 0
-<<<<<<< HEAD
 
 :DETECT_HOSTING
 set "hosting=Local"
@@ -54,5 +49,3 @@ if /i not "!repo_url:gitea=!"=="!repo_url!" set "hosting=Gitea"
 if /i not "!repo_url:gitee=!"=="!repo_url!" set "hosting=Gitea"
 if "!hosting!"=="Local" set "hosting=Other"
 exit /b 0
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785

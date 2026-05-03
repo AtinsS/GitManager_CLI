@@ -61,17 +61,10 @@ set skip_line=%del_num%
 set current=0
 type nul > "%TEMP_FILE%"
 if exist "%CONFIG_FILE%" (
-<<<<<<< HEAD
     for /f "usebackq tokens=1,2,* delims=;" %%a in ("%CONFIG_FILE%") do (
         set /a current+=1
         if not !current!==%skip_line% (
             >> "%TEMP_FILE%" echo(%%a;%%b;%%c
-=======
-    for /f "usebackq tokens=1,2 delims=;" %%a in ("%CONFIG_FILE%") do (
-        set /a current+=1
-        if not !current!==%skip_line% (
-            echo %%a;%%b >> "%TEMP_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
         ) else (
             set "deleted_repo=%%a"
         )
@@ -179,12 +172,8 @@ if errorlevel 1 (
     echo %GREEN%Готово!%RESET%
     findstr /b /c:"%repo_name%;" "%CONFIG_FILE%" >nul 2>&1
     if errorlevel 1 (
-<<<<<<< HEAD
         call :DETECT_HOSTING
         >> "%CONFIG_FILE%" echo(%repo_name%;%repo_dir%;!repo_url!;!hosting!
-=======
-        echo %repo_name%;%repo_dir% >> "%CONFIG_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
         echo %GREEN%Repository added to the list!%RESET%
     ) else (
         echo %YELLOW%Repository is already in the list%RESET%
@@ -194,7 +183,6 @@ echo.
 pause
 goto :eof
 
-<<<<<<< HEAD
 :DETECT_HOSTING
 set "hosting=Local"
 if not defined repo_url exit /b 0
@@ -209,27 +197,17 @@ if /i not "!repo_url:gitee=!"=="!repo_url!" set "hosting=Gitea"
 if "!hosting!"=="Local" set "hosting=Other"
 exit /b 0
 
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
 :UPDATE_REPO_PATH
 set "repo_name=%~1"
 set "new_path=%~2"
 
 type nul > "%TEMP_FILE%"
 if exist "%CONFIG_FILE%" (
-<<<<<<< HEAD
     for /f "usebackq tokens=1,2,* delims=;" %%a in ("%CONFIG_FILE%") do (
         if "%%a"=="%repo_name%" (
             >> "%TEMP_FILE%" echo(%%a;%new_path%;%%c
         ) else (
             >> "%TEMP_FILE%" echo(%%a;%%b;%%c
-=======
-    for /f "usebackq tokens=1,2 delims=;" %%a in ("%CONFIG_FILE%") do (
-        if "%%a"=="%repo_name%" (
-            echo %%a;%new_path% >> "%TEMP_FILE%"
-        ) else (
-            echo %%a;%%b >> "%TEMP_FILE%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
         )
     )
     move /y "%TEMP_FILE%" "%CONFIG_FILE%" >nul 2>nul
@@ -243,20 +221,12 @@ echo %BOLD%%YELLOW%Автоматическое исправление конф�
 if exist "%CONFIG_FILE%" (
     set "temp_cfg=%TEMP%\git_repos_fixed.cfg"
     type nul > "!temp_cfg!"
-<<<<<<< HEAD
     for /f "usebackq tokens=1,2,* delims=;" %%a in ("%CONFIG_FILE%") do (
-=======
-    for /f "usebackq tokens=1,* delims=;" %%a in ("%CONFIG_FILE%") do (
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
         :: Очищаем имя - берем только первое слово
         for /f "tokens=1" %%n in ("%%a") do set "clean_name=%%n"
         :: Очищаем путь - убираем лишние слова в конце
         set "clean_path=%%b"
-<<<<<<< HEAD
         >> "!temp_cfg!" echo(!clean_name!;!clean_path!;%%c
-=======
-        echo !clean_name!;!clean_path!>> "!temp_cfg!"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     )
     move /y "!temp_cfg!" "%CONFIG_FILE%" >nul 2>nul
     echo %GREEN%git_repos.cfg исправлен%RESET%

@@ -45,19 +45,9 @@ if not exist "%MAIN_SCRIPTS_DIR%" mkdir "%MAIN_SCRIPTS_DIR%" 2>nul
 
 :MENU
 cls
-<<<<<<< HEAD
 echo %CYAN%═════════════════════════════════════════════════════════════%RESET%
 echo %BLUE%             GIT-MANAGER 🚀         %YELLOW%by AtinsS%RESET%
 echo %CYAN%═════════════════════════════════════════════════════════════%RESET%
-=======
-echo %CYAN%═══════════════════════════════════════════════════════════════════════════════%RESET%
-echo   %BLUE%     ███  ███ █████    █   █  ███  █   █  ███   ███  █████ ████  
-echo   %BLUE%    █      █    █      ██ ██ █   █ ██  █ █   █ █     █     █   █ 
-echo   %BLUE%    █  ██  █    █      █ █ █ █████ █ █ █ █████ █  ██ ████  ████  
-echo   %BLUE%    █   █  █    █      █   █ █   █ █  ██ █   █ █   █ █     █  █  
-echo   %BLUE%     ███  ███   █      █   █ █   █ █   █ █   █  ███  █████ █   █  %YELLOW%by AtinsS%RESET%
-echo %CYAN%══════════════════════════════════════════════════════════════════════════════%RESET%
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
 echo.
 set count=0
 if exist "%CONFIG_FILE%" (
@@ -82,7 +72,6 @@ if exist "%CONFIG_FILE%" (
           for /f "usebackq tokens=1,2,3,4 delims=;" %%i in ("%CONFIG_FILE%") do (
             if "%%i"=="%%r" (
               set /a count+=1
-<<<<<<< HEAD
               call :SET_HOSTING_LABEL "%%k" "%%l"
               call "%MAIN_SCRIPTS_DIR%\repo-status.bat" "%%j" status_!count!
 
@@ -93,28 +82,6 @@ if exist "%CONFIG_FILE%" (
 
               call :PRINT_REPO_ROW !count! "%%i" "!branch_info!" "!hosting_label!" "!hosting_plain!" "!status_text!"
               >> "!REPO_MAP_FILE!" echo !count!=%%i
-=======
-              set "repo_name_!count!=%%x"
-              set "repo_path_!count!=%%y"
-              call "%MAIN_SCRIPTS_DIR%\repo-status.bat" "%%y" status_!count!
-              
-              
-              
-              :: Формируем имя переменной с иконкой
-              set "icon_var=hosting_icon_!count!"
-              call set "current_icon=%%!icon_var!%%"
-              
-              :: Отображение с детальным статусом
-              if "!status_icon!"=="%GREEN%[✓]%RESET%" (
-                echo  %GREEN%!count!.%RESET% %%x %CYAN%!branch_info!%RESET% %GREEN%  ● чистый%RESET%
-                ) else if "!status_icon!"=="%YELLOW%[!]%RESET%" (
-                echo  %GREEN%!count!.%RESET% %%x %CYAN%!branch_info!%RESET% %YELLOW%  ● изменения%RESET%
-                ) else if "!status_icon!"=="%RED%[✗]%RESET%" (
-                echo  %GREEN%!count!.%RESET% %%x %CYAN%!branch_info!%RESET% %RED%  ● ошибка%RESET%
-                ) else (
-                echo  %GREEN%!count!.%RESET% %%x %RED%  ● не найден%RESET%
-              )
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
               set "repo_found=1"
             )
           )
@@ -127,11 +94,7 @@ if exist "%CONFIG_FILE%" (
     
     :: Ищем репозитории без группы
     set "has_ungrouped=0"
-<<<<<<< HEAD
     for /f "usebackq tokens=1,2,3,4 delims=;" %%a in ("%CONFIG_FILE%") do (
-=======
-    for /f "usebackq tokens=1,* delims=;" %%a in ("%CONFIG_FILE%") do (
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
       findstr /x /c:"%%a" "!MARKED_FILE!" >nul 2>&1
       if errorlevel 1 set "has_ungrouped=1"
     )
@@ -139,7 +102,6 @@ if exist "%CONFIG_FILE%" (
     if !has_ungrouped!==1 (
       echo.
       echo %BOLD%%YELLOW%  ▸ Без группы:%RESET%
-<<<<<<< HEAD
       for /f "usebackq tokens=1,2,3,4 delims=;" %%a in ("%CONFIG_FILE%") do (
         findstr /x /c:"%%a" "!MARKED_FILE!" >nul 2>&1
         if errorlevel 1 (
@@ -154,30 +116,6 @@ if exist "%CONFIG_FILE%" (
 
           call :PRINT_REPO_ROW !count! "%%a" "!branch_info!" "!hosting_label!" "!hosting_plain!" "!status_text!"
           >> "!REPO_MAP_FILE!" echo !count!=%%a
-=======
-      for /f "usebackq tokens=1,* delims=;" %%a in ("%CONFIG_FILE%") do (
-        findstr /x /c:"%%a" "!MARKED_FILE!" >nul 2>&1
-        if errorlevel 1 (
-          set /a count+=1
-          set "repo_name_!count!=%%a"
-          set "repo_path_!count!=%%b"
-          call "%MAIN_SCRIPTS_DIR%\repo-status.bat" "%%b" status_!count!
-          
-          
-          :: Формируем имя переменной с иконкой
-          set "icon_var=hosting_icon_!count!"
-          call set "current_icon=%%!icon_var!%%"
-          
-          :: Отображение с детальным статусом
-          if "!status_icon!"=="%GREEN%[✓]%RESET%" (
-            echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %GREEN%     ● чистый%RESET%
-            ) else if "!status_icon!"=="%YELLOW%[!]%RESET%" (
-            echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %YELLOW%    ● изменения%RESET%
-            echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %RED%       ● ошибка%RESET%
-            ) else (
-            echo  %GREEN%!count!.%RESET% %%a %RED%   ● не найден%RESET%
-          )
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
         )
       )
     )
@@ -186,7 +124,6 @@ if exist "%CONFIG_FILE%" (
     
     ) else (
     :: Нет файла групп — показываем все репозитории без групп
-<<<<<<< HEAD
     for /f "usebackq tokens=1,2,3,4 delims=;" %%a in ("%CONFIG_FILE%") do (
       set /a count+=1
       call :SET_HOSTING_LABEL "%%c" "%%d"
@@ -199,59 +136,6 @@ if exist "%CONFIG_FILE%" (
 
       call :PRINT_REPO_ROW !count! "%%a" "!branch_info!" "!hosting_label!" "!hosting_plain!" "!status_text!"
       >> "!REPO_MAP_FILE!" echo !count!=%%a
-=======
-    for /f "usebackq tokens=1,* delims=;" %%a in ("%CONFIG_FILE%") do (
-      set /a count+=1
-      set "repo_name_!count!=%%a"
-      set "repo_path_!count!=%%b"
-      call "%MAIN_SCRIPTS_DIR%\repo-status.bat" "%%b" status_!count!
-      
-      :: Проверка хостинга
-      set "hosting_icon_!count!="
-      if exist "%%b\.git" (
-        pushd "%%b" 2>nul
-        if not errorlevel 1 (
-          for /f "tokens=*" %%u in ('git remote get-url origin 2^>nul') do set "remote_url=%%u"
-          popd
-          
-          echo !remote_url! | findstr /i "github.com" >nul 2>&1
-          if not errorlevel 1 set "hosting_icon_!count!=[GH]"
-          
-          echo !remote_url! | findstr /i "gitlab.com" >nul 2>&1
-          if not errorlevel 1 set "hosting_icon_!count!=[GL]"
-          
-          echo !remote_url! | findstr /i "bitbucket.org" >nul 2>&1
-          if not errorlevel 1 set "hosting_icon_!count!=[BB]"
-          
-          echo !remote_url! | findstr /i "dev.azure.com" >nul 2>&1
-          if not errorlevel 1 set "hosting_icon_!count!=[AZ]"
-          
-          echo !remote_url! | findstr /i "gitea\|gitee" >nul 2>&1
-          if not errorlevel 1 set "hosting_icon_!count!=[GT]"
-          
-          if not defined hosting_icon_!count! (
-            echo !remote_url! | findstr /i "git@\|\.git" >nul 2>&1
-            if not errorlevel 1 set "hosting_icon_!count!=[GIT]"
-          )
-        )
-      )
-      
-      :: Формируем имя переменной с иконкой
-      set "icon_var=hosting_icon_!count!"
-      call set "current_icon=%%!icon_var!%%"
-      
-      :: Отображение
-      echo.
-      if "!status_icon!"=="%GREEN%[✓]%RESET%" (
-        echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %GREEN%● чистый%RESET% !hosting_icon!
-        ) else if "!status_icon!"=="%YELLOW%[!]%RESET%" (
-        echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %YELLOW%● изменения%RESET% !hosting_icon!
-        ) else if "!status_icon!"=="%RED%[✗]%RESET%" (
-        echo  %GREEN%!count!.%RESET% %%a %CYAN%!branch_info!%RESET% %RED%● ошибка%RESET% !hosting_icon!
-        ) else (
-        echo  %GREEN%!count!.%RESET% %%a %RED%● не найден%RESET%
-      )
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     )
   )
 )
@@ -282,7 +166,6 @@ if not errorlevel 1 set is_number=1
 
 if %is_number%==1 (
   if %action% leq %count% (
-<<<<<<< HEAD
     set "repo_name="
     if exist "!REPO_MAP_FILE!" (
       for /f "usebackq tokens=1,2 delims==" %%x in ("!REPO_MAP_FILE!") do (
@@ -297,10 +180,6 @@ if %is_number%==1 (
       pause
     )
     del "!REPO_MAP_FILE!" 2>nul
-=======
-    set "repo_index=%action%"
-    call "%MAIN_SCRIPTS_DIR%\repo-select.bat" "%repo_index%"
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     goto MENU
     ) else (
     echo %RED%  ❌ Неверный номер!%RESET%
@@ -310,50 +189,32 @@ if %is_number%==1 (
   )
   ) else (
   if /i "%action%"=="C" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\clone-repo.bat"
     goto MENU
   )
   if /i "%action%"=="A" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\add-repo.bat"
     goto MENU
   )
   if /i "%action%"=="U" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\repo-maintenance.bat" UPDATE_ALL
     goto MENU
   )
   if /i "%action%"=="G" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\groups.bat" MANAGE_GROUPS
     goto MENU
   )
   if /i "%action%"=="D" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\repo-maintenance.bat" DELETE_REPO
     goto MENU
   )
   if /i "%action%"=="S" (
-<<<<<<< HEAD
     del "!REPO_MAP_FILE!" 2>nul
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
     call "%MAIN_SCRIPTS_DIR%\repo-maintenance.bat" SETTINGS
     goto MENU
   )
@@ -363,7 +224,6 @@ if %is_number%==1 (
   pause
   goto MENU
 )
-<<<<<<< HEAD
 
 :SET_HOSTING_LABEL
 set "repo_url=%~1"
@@ -454,5 +314,3 @@ set "_len=0"
 if defined _s for /l %%a in (0,1,1000) do if "!_s:~%%a,1!" neq "" set /a _len+=1
 endlocal & set "%~2=%_len%"
 exit /b 0
-=======
->>>>>>> e80729d99517f44b23d5675f76d91b041993a785
