@@ -8,7 +8,7 @@ if "%INSTALL_DIR:~-1%"=="\" set "INSTALL_DIR=%INSTALL_DIR:~0,-1%"
 cls
 echo.
 echo   ============================================================
-echo         GitManager - Command Installation
+echo         GitManager CLI - Command Installation
 echo   ============================================================
 echo.
 echo   Location: %INSTALL_DIR%

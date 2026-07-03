@@ -46,7 +46,7 @@ if not exist "%MAIN_SCRIPTS_DIR%" mkdir "%MAIN_SCRIPTS_DIR%" 2>nul
 :MENU
 cls
 echo %CYAN%═════════════════════════════════════════════════════════════%RESET%
-echo %BLUE%             GIT-MANAGER 🚀         %YELLOW%by AtinsS%RESET%
+echo %BLUE%             GIT-MANAGER CLI 🚀         %YELLOW%by AtinsS%RESET%
 echo %CYAN%═════════════════════════════════════════════════════════════%RESET%
 echo.
 set count=0
@@ -156,6 +156,7 @@ echo %CYAN%  [D] Delete %GREEN%(removed from manager only)%RESET%
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo %RED%  [X] Exit%RESET%
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
+echo %CYAN%Repo:%RESET% https://github.com/AtinsS/GitManager_CLI
 echo.
 set /p "action=%BOLD%%WHITE%  → %RESET%"
 

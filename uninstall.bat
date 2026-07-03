@@ -8,7 +8,7 @@ if "%INSTALL_DIR:~-1%"=="\" set "INSTALL_DIR=%INSTALL_DIR:~0,-1%"
 cls
 echo.
 echo   ============================================================
-echo         GitManager - Command Uninstallation
+echo         GitManager CLI - Command Uninstallation
 echo   ============================================================
 echo.
 echo   Location: %INSTALL_DIR%
@@ -22,7 +22,7 @@ for /f "tokens=2*" %%a in ('reg query "HKCU\Environment" /v Path 2^>nul') do set
 if defined CURRENT_PATH (
     echo "!CURRENT_PATH!" | findstr /i /c:"!INSTALL_DIR!" >nul 2>&1
     if errorlevel 1 (
-        echo   [INFO] GitManager is not installed. Nothing to remove.
+        echo   [INFO] GitManager CLI is not installed. Nothing to remove.
         echo.
         pause
         exit /b 0
@@ -65,7 +65,7 @@ if errorlevel 1 (
 echo   [SUCCESS] Uninstallation complete!
 echo.
 echo   +----------------------------------------+
-echo   ^| GitManager removed from PATH           ^|
+echo   ^| GitManager CLI removed from PATH           ^|
 echo   ^| Open a new terminal to apply changes   ^|
 echo   +----------------------------------------+
 echo.

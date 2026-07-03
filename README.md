@@ -1,146 +1,165 @@
-# 🚀 Git Manager
+# 🚀 Git Manager CLI
 
-**Platform:** Windows only  
+> **Git without pain. Without commands. Without extra steps.**
 
-**Language:** Batch Script
+**Platform:** Windows · **Language:** Batch Script · **Version:** 2.0
 
 [**Russian README**](https://github.com/AtinsS/GitManager/blob/main/README.ru.md)
 
 ---
 
-## 🚀 What is this?
+## 📖 About
 
-**Git Manager** is an interactive wrapper around Git that turns the complex CLI into a simple menu.
+**Git Manager CLI** is an interactive shell over Git that turns the terminal into an intuitive menu.
 
-Forget about:
+All repositories — GitHub, GitLab, Bitbucket, Azure DevOps, Codeberg, Gitea — in one place.
 
+```diff
+- git add .
+- git commit -m "fix"
+- git push origin main
+
++ Just pick an action → the tool handles the rest
 ```
-git add .
-git commit -m "fix"
-git push origin main
-```
-
-Now — just pick an action.  
-**The tool does the rest.**
 
 ---
 
-## ⁉️ Why it’s convenient
+## ✨ Why it's handy
 
-- ⚡ **Faster** — routine operations in a few clicks
-- 🧠 **Simpler** — no need to remember which hosting your repository is on
-- 📦 **More organized** — all repositories from different hostings in one place
-- 🎯 **More practical** — focus on code, not on pushing repos
+| | |
+|---|---|
+| ⚡ **Fast** | Routine operations in a couple of clicks |
+| 🧠 **Simple** | No need to remember where each repo lives |
+| 📦 **Convenient** | All projects from different hosts in one menu |
+| 🎯 **Practical** | Launch it from anywhere via CLI |
 
 ---
 
 ## 🧰 Features
 
-- 📁 Manage multiple repositories from different hostings
-- 📦 Group projects by categories
-- ⬆️ Commit + Push in a single action
-- 🆒 Mass update of all repositories with one button
-- 📊 View repository **status** and **hosting** right from the main menu
-- 🌿 Full branch management (create, switch)
-- 💘 Clone, create, or even initialize directly on GITHUB / GITLAB
-- 📜 View commit history (git log)
-- 🤖 Automatic commits on a timer
-- 🌐 Automatic language detection (currently 2 languages: Russian and English)
+### 📁 Repository Management
+- ✅ Multiple repositories from different hosts in one window
+- ✅ Organize projects into groups
+- ✅ Auto-detect host by URL
+- ✅ View status and current branch right from the main menu
+
+### ⚡ Git Operations
+- `Git status` — check state
+- `Git pull` — update
+- `Git add + commit + push` — commit with a message in one action
+- `Git merge` / `merge --abort` — branch merging and rollback
+- Create and switch branches
+- List branches available for merge
+
+### ⏪ Rollback Changes
+- `reset` — roll back to a specific commit (soft / mixed / hard)
+- `revert` — undo a commit while preserving history
+
+### 🤖 Automation
+- **Auto-commits** — commit on a timer (every N minutes) with optional push
+- **Mass update** — `git pull` for all repositories with one button
+
+### 🌐 Localization
+- Auto-detect system language
+- Two sets of scripts: `ru/` and `en/`
 
 ---
 
-## 🧑‍💻 Who is this for?
+## 🚀 Quick Start
 
-- Developers with multiple projects on different hostings
-- Those tired of the Git CLI
-- Beginners who want to quickly get up to speed with Git
-- Anyone who values their time
+**1.** Install [Git](https://git-scm.com/)
 
----
-
-## ⚙️ Quick start
-
-1. Install [Git](https://git-scm.com/)
-2. Download the project or clone the repository
-3. Run: `GIT-MANAGER.BAT`
-4. Enjoy
-
----
-
-## 🖥️ What it looks like
-
-### Main menu
-
+**2.** Download the project:
 ```batch
-═════════════════════════════════════════════════════════════
-             GIT-MANAGER 🚀         by AtinsS
-═════════════════════════════════════════════════════════════
+git clone https://github.com/AtinsS/GitManager.git
+```
 
+**3.** Run `GIT-MANAGER.BAT`
+
+**4.** *(Optional)* Run `install.bat` — after that, you can call `gitmanager` from any folder.
+
+---
+
+## 🖥️ Interface
+
+### Main Menu
+```
+═════════════════════════════════════════════════════════════
+             GIT-MANAGER          by AtinsS
+═════════════════════════════════════════════════════════════
 ▸ REPOSITORIES
-
   ▸ Group: Homework
  1.  DataInApp              [dev]    [GitLab]      ● changes
-
-  ▸ Group: Pet projects
+  ▸ Group: Pet-projects
  2.  GIT-MANAGER-REPO       [main]   [GitHub]      ● changes
  3.  MySITE                 [dev]    [GitHub]      ● clean
-
-  ▸ Group: Tests (private)
- 4.  FirsPrivateRepo        [main]   [GitHub]      ● clean
- 5.  ForTests               [dev]    [GitLab]      ● clean  
-
-════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════
 ▸ ACTIONS
-  [1-4]  Select
-════════════════════════════════════════════════════════════
-  [C] Clone repository
-  [A] Add repository
-
-  [G] Manage groups
-  [U] Update all repositories
-
-  [S] Settings
-  [D] Delete (repo will only be removed from manager)
-════════════════════════════════════════════════════════════
+  [1-3]  Select repository
+  [C] Clone        [A] Add
+  [G] Groups       [U] Update all
+  [S] Settings     [D] Remove from manager
   [X] Exit
-════════════════════════════════════════════════════════════
+  →
+```
 
+### Repository Menu
+```
+  Repository: DataInApp  Host: [GitLab]  Branch: dev
+  Status: ⚠ has changes
+  ════════════════════════════════════════════════════════════
+  1. Git status              6. Git merge
+  2. Git pull                7. Git merge --abort
+  3. Add + Commit + Push     8. Show branches for merge
+  4. Rollback menu           9. Create branch
+  5. View history            10. Switch branch
+                             11. Auto-commits (every N minutes)
+   0. Back to main menu
   →
 ```
 
 ---
 
-### Actions inside a repository
+## 🌐 Supported Hosts
 
-```batch
-
-  Repository: DataInApp  Hosting: [GitLab]  Branch: dev
-  Status: ⚠️ changes present
-  ═══════════════════════════════════════════════════════════
-
-  1. Git status (check state)
-  2. Git pull (update)
-  3. Git add + commit + push (with comment)
-  4. Go to undo changes menu
-  5. View history (git log)
-  6. Git merge (merge branches)
-  7. Git merge --abort (cancel merge)
-  8. Show branches for merging
-  9. Create branch
-  10. Switch branch
-  11. Auto-commits (every N minutes)
-   0. Back to main menu
-
- →
-```
+- 🟦 **GitHub** · **Azure DevOps** · **Bitbucket**
+- 🟪 **GitLab**
+- 🟩 **Codeberg** · **Gitea** · **Gitee**
+- 🟨 **Local** (local repositories)
 
 ---
 
-## ☕ Support the developer
+## 📂 Project Structure
 
-If **Git Manager** saved you time and proved useful, you can support the project's development:
+<details>
+<summary><b>Show structure</b></summary>
+
+```
+GitManager/
+├── GIT-MANAGER.BAT        # Entry point (auto-detect language)
+├── gitmanager.bat         # Wrapper for PATH launch
+├── install.bat            # Add to PATH
+├── uninstall.bat          # Remove from PATH
+├── cfg/
+│   ├── git_repos.cfg      # Repository list (Name;Path;URL;Host)
+│   └── groups.cfg         # Groups (GroupName;repo1;repo2;...)
+├── ru/
+│   ├── GIT-MANAGER-RU.bat # Main menu (Russian)
+│   └── git-scripts/       # Git operation scripts
+└── en/
+    ├── GIT-MANAGER-EN.bat # Main menu (English)
+    └── git-scripts/       # Git operation scripts
+```
+
+</details>
+
+---
+
+## ☕ Support the Developer
+
+If **Git Manager** saved you time:
 
 - ⭐ Star the repository
-- ☕ [Buy me a coffee and a bun](https://pay.cloudtips.ru/p/cbaa3c81)
+- ☕ [Buy me coffee with a bun](https://pay.cloudtips.ru/p/cbaa3c81)
 
-Any support = more time for new projects.
+Any support = more time for new projects 💜
