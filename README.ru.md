@@ -69,7 +69,7 @@
 
 **2.** Скачай проект:
 ```batch
-git clone https://github.com/AtinsS/GitManager.git
+git clone https://github.com/AtinsS/GitManager_CLI.git
 ```
 
 **3.** Запусти `gitmanager.bat`

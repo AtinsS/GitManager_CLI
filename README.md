@@ -71,7 +71,7 @@ All repositories — GitHub, GitLab, Bitbucket, Azure DevOps, Codeberg, Gitea �
 
 **2.** Download the project:
 ```batch
-git clone https://github.com/AtinsS/GitManager.git
+git clone https://github.com/AtinsS/GitManager_CLI.git
 ```
 
 **3.** Run `gitmanager.bat`
@@ -114,7 +114,7 @@ git clone https://github.com/AtinsS/GitManager.git
   3. Add + Commit + Push     8. Show branches for merge
   4. Rollback menu           9. Create branch
   5. View history            10. Switch branch
-                             11. Auto-commits (every N minutes)
+                             11. Auto-commits (every N minutes)   
    0. Back to main menu
   →
 ```
