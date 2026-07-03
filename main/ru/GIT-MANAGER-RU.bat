@@ -140,6 +140,10 @@ if exist "%CONFIG_FILE%" (
   )
 )
 
+if %count% equ 0 (
+  echo.
+  echo %YELLOW%  Нет репозиториев. Чтобы добавить, выберите [C] или [A]%RESET%
+)
 
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo %BOLD%%WHITE%▸ ДЕЙСТВИЯ%RESET%
@@ -150,7 +154,8 @@ echo %CYAN%  [S] Настройки     [D] Удалить из менеджер
 echo %RED%  [X] Выход%RESET%   
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo.
-echo [COFFEE] Угостить автора кофием
+echo [COFFEE] Угостить автора кофейком
+echo.
 set /p "action=%BOLD%%WHITE%  → %RESET%"
 
 

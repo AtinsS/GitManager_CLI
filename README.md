@@ -52,8 +52,8 @@ All repositories — GitHub, GitLab, Bitbucket, Azure DevOps, Codeberg, Gitea �
 - List branches available for merge
 
 ### ⏪ Rollback Changes
-- `reset` — roll back to a specific commit (soft / mixed / hard)
-- `revert` — undo a commit while preserving history
+- ` Git reset` — roll back to a specific commit (soft / mixed / hard)
+- ` Git revert` — undo a commit while preserving history
 
 ### 🤖 Automation
 - **Auto-commits** — commit on a timer (every N minutes) with optional push
@@ -74,9 +74,9 @@ All repositories — GitHub, GitLab, Bitbucket, Azure DevOps, Codeberg, Gitea �
 git clone https://github.com/AtinsS/GitManager.git
 ```
 
-**3.** Run `GIT-MANAGER.BAT`
+**3.** Run `gitmanager.bat`
 
-**4.** *(Optional)* Run `install.bat` — after that, you can call `gitmanager` from any folder.
+4. (Optional) Run install.bat — after that, you can use the gitmanager command in the terminal.
 
 ---
 
@@ -89,7 +89,8 @@ git clone https://github.com/AtinsS/GitManager.git
 ═════════════════════════════════════════════════════════════
 ▸ REPOSITORIES
   ▸ Group: Homework
- 1.  DataInApp              [dev]    [GitLab]      ● changes
+ 1.  DataInApp              [dev]    [GitLab]      ● not found
+
   ▸ Group: Pet-projects
  2.  GIT-MANAGER-REPO       [main]   [GitHub]      ● changes
  3.  MySITE                 [dev]    [GitHub]      ● clean
@@ -105,7 +106,7 @@ git clone https://github.com/AtinsS/GitManager.git
 
 ### Repository Menu
 ```
-  Repository: DataInApp  Host: [GitLab]  Branch: dev
+  Repository: MySITE   Host: [GitLab]  Branch: dev
   Status: ⚠ has changes
   ════════════════════════════════════════════════════════════
   1. Git status              6. Git merge

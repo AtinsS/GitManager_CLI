@@ -1,2 +1,2 @@
 @echo off
-call "%~dp0GIT-MANAGER.BAT" %*
+call "%~dp0main\GIT-MANAGER.BAT" %*

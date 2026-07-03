@@ -50,8 +50,8 @@
 - Просмотр веток для слияния
 
 ### ⏪ Откат изменений
-- `reset` — откат на конкретный коммит (soft / mixed / hard)
-- `revert` — отмена коммита с сохранением истории
+- `Git reset` — откат на конкретный коммит (soft / mixed / hard)
+- `Git revert` — отмена коммита с сохранением истории
 
 ### 🤖 Автоматизация
 - **Авто-коммиты** — коммит по таймеру (каждые N минут) с опциональным push
@@ -72,9 +72,9 @@
 git clone https://github.com/AtinsS/GitManager.git
 ```
 
-**3.** Запусти `GIT-MANAGER.BAT`
+**3.** Запусти `gitmanager.bat`
 
-**4.** *(Опционально)* Запусти `install.bat` — после этого можно вызывать `gitmanager` из любой папки.
+**4.** *(Опционально)* Запусти `install.bat` — после этого можно использовать в косоли команду `gitmanager`
 
 ---
 
@@ -87,7 +87,8 @@ git clone https://github.com/AtinsS/GitManager.git
 ═════════════════════════════════════════════════════════════
 ▸ РЕПОЗИТОРИИ
   ▸ Группа: Homework
- 1.  DataInApp              [dev]    [GitLab]      ● изменения
+ 1.  DataInApp              [dev]    [GitLab]      ● не найден
+
   ▸ Группа: Пет-проекты
  2.  GIT-MANAGER-REPO       [main]   [GitHub]      ● изменения
  3.  MySITE                 [dev]    [GitHub]      ● чистый
@@ -103,7 +104,7 @@ git clone https://github.com/AtinsS/GitManager.git
 
 ### Меню репозитория
 ```
-  Репозиторий: DataInApp  Хостинг: [GitLab]  Ветка: dev
+  Репозиторий: MySITE  Хостинг: [GitLab]  Ветка: dev
   Статус: ⚠ есть изменения
   ════════════════════════════════════════════════════════════
   1. Git status              6. Git merge

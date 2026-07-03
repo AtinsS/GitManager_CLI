@@ -140,6 +140,11 @@ if exist "%CONFIG_FILE%" (
   )
 )
 
+if %count% equ 0 (
+  echo.
+  echo %YELLOW%  No repositories. To add one, select [C] or [A]%RESET%
+)
+
 echo.
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo %BOLD%%WHITE%▸ ACTIONS%RESET%
@@ -150,6 +155,7 @@ echo %CYAN%  [S] Settings      [D] Remove from manager%RESET%
 echo %RED%  [X] Exit%RESET%
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo [COFFEE] Buy me coffee 
+echo.
 set /p "action=%BOLD%%WHITE%  → %RESET%"
 
 :: Check if input is number or letter
