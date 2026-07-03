@@ -143,21 +143,13 @@ if exist "%CONFIG_FILE%" (
 echo.
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo %BOLD%%WHITE%▸ ACTIONS%RESET%
-if %count% gtr 0 echo %GREEN%  [1-%count%]  Select%RESET%
-echo %CYAN%════════════════════════════════════════════════════════════%RESET%
-echo %CYAN%  [C] Clone repository%RESET%
-echo %CYAN%  [A] Add repository %RESET%
-echo.
-echo %CYAN%  [G] Manage groups%RESET%
-echo %CYAN%  [U] Update all repositories %RESET%
-echo.
-echo %CYAN%  [S] Settings%RESET%
-echo %CYAN%  [D] Delete %GREEN%(removed from manager only)%RESET%
-echo %CYAN%════════════════════════════════════════════════════════════%RESET%
+if %count% gtr 0 echo %GREEN%  [1-%count%]  Select repository%RESET%
+echo %CYAN%  [C] Clone         [A] Add%RESET%
+echo %CYAN%  [G] Groups        [U] Update all%RESET%
+echo %CYAN%  [S] Settings      [D] Remove from manager%RESET%
 echo %RED%  [X] Exit%RESET%
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
-echo %CYAN%Repo:%RESET% https://github.com/AtinsS/GitManager_CLI
-echo.
+echo [COFFEE] Buy me coffee 
 set /p "action=%BOLD%%WHITE%  → %RESET%"
 
 :: Check if input is number or letter
@@ -220,6 +212,11 @@ if %is_number%==1 (
     goto MENU
   )
   if /i "%action%"=="X" exit
+  if /i "%action%"=="COFFEE" (
+    del "!REPO_MAP_FILE!" 2>nul
+    start "" "https://pay.cloudtips.ru/p/cbaa3c81"
+    goto MENU
+  )
   del "!REPO_MAP_FILE!" 2>nul
   echo %RED%  ❌ Invalid choice!%RESET%
   pause

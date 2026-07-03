@@ -28,19 +28,13 @@ echo %CYAN%  ══════════════════════�
 echo %BOLD%%WHITE%  Repository:%RESET% %GREEN%%current_repo%%RESET%  %BOLD%%WHITE%Hosting:%RESET% !hosting_label!  %BOLD%%WHITE%Branch:%RESET% %BLUE%!current_branch!%RESET%
 echo %BOLD%%WHITE%  Status:%RESET% !repo_status!
 echo %CYAN%  ════════════════════════════════════════════════════════════%RESET%
-echo.
-echo %GREEN%  1.%RESET% Git status (check status)
-echo %GREEN%  2.%RESET% Git pull (update)
-echo %GREEN%  3.%RESET% Git add + commit + push (with message)
-echo %GREEN%  4.%RESET% Go to undo changes menu
-echo %GREEN%  5.%RESET% View history (git log)
-echo %GREEN%  6.%RESET% Git merge (merge branches)
-echo %GREEN%  7.%RESET% Git merge --abort (cancel merge)
-echo %GREEN%  8.%RESET% Show branches for merge
-echo %GREEN%  9.%RESET% Create branch
-echo %GREEN%  10.%RESET% Switch branch
-echo %GREEN%  11.%RESET% Auto-commits (every N minutes)
-echo %RED%  0.%RESET% Return to main menu
+echo   %GREEN%1.%RESET% Git status              %GREEN%6.%RESET% Git merge
+echo   %GREEN%2.%RESET% Git pull                %GREEN%7.%RESET% Git merge --abort
+echo   %GREEN%3.%RESET% Add + Commit + Push     %GREEN%8.%RESET% Show branches for merge
+echo   %GREEN%4.%RESET% Undo changes menu       %GREEN%9.%RESET% Create branch
+echo   %GREEN%5.%RESET% View history            %GREEN%10.%RESET% Switch branch
+echo                              %GREEN%11.%RESET% Auto-commits (every N minutes)
+echo   %RED%0.%RESET% Return to main menu
 echo.
 set /p "repo_action=%BOLD%%WHITE% → %RESET%"
 

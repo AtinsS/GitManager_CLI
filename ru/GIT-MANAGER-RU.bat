@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
@@ -143,21 +143,14 @@ if exist "%CONFIG_FILE%" (
 
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
 echo %BOLD%%WHITE%▸ ДЕЙСТВИЯ%RESET%
-if %count% gtr 0 echo %GREEN%  [1-%count%]  Выбрать%RESET%
+if %count% gtr 0 echo %GREEN%  [1-%count%]  Выбрать репозиторий%RESET%
+echo %CYAN%  [C] Клонировать   [A] Добавить%RESET%
+echo %CYAN%  [G] Группы        [U] Обновить все%RESET%
+echo %CYAN%  [S] Настройки     [D] Удалить из менеджера%RESET%
+echo %RED%  [X] Выход%RESET%   
 echo %CYAN%════════════════════════════════════════════════════════════%RESET%
-echo %CYAN%  [C] Клонировать репозиторий%RESET%
-echo %CYAN%  [A] Добавить репозиторий %RESET%
 echo.
-echo %CYAN%  [G] Управление группами%RESET%
-echo %CYAN%  [U] Обновить все репозитории %RESET%
-echo.
-echo %CYAN%  [S] Настройки%RESET%
-echo %CYAN%  [D] Удалить %GREEN%(репо удалится только из менеджера)%RESET%
-echo %CYAN%════════════════════════════════════════════════════════════%RESET%
-echo %RED%  [X] Выход%RESET%
-echo %CYAN%════════════════════════════════════════════════════════════%RESET%
-echo %CYAN%Репо:%RESET% https://github.com/AtinsS/GitManager_CLI
-echo.
+echo [COFFEE] Угостить автора кофием
 set /p "action=%BOLD%%WHITE%  → %RESET%"
 
 
@@ -222,6 +215,11 @@ if %is_number%==1 (
     goto MENU
   )
   if /i "%action%"=="X" exit
+  if /i "%action%"=="COFFEE" (
+    del "!REPO_MAP_FILE!" 2>nul
+    start "" "https://pay.cloudtips.ru/p/cbaa3c81"
+    goto MENU
+  )
   del "!REPO_MAP_FILE!" 2>nul
   echo %RED%  ❌ Неверный выбор!%RESET%
   pause
