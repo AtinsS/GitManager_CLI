@@ -128,31 +128,6 @@ git clone https://github.com/AtinsS/GitManager_CLI.git
 
 ---
 
-## 📂 Структура проекта
-
-<details>
-<summary><b>Показать структуру</b></summary>
-
-```
-GitManager/
-├── GIT-MANAGER.BAT        # Точка входа (авто-определение языка)
-├── gitmanager.bat         # Обёртка для запуска из PATH
-├── install.bat            # Установка в PATH
-├── uninstall.bat          # Удаление из PATH
-├── cfg/
-│   ├── git_repos.cfg      # Список репозиториев (Name;Path;URL;Host)
-│   └── groups.cfg         # Группы (GroupName;repo1;repo2;...)
-├── ru/
-│   ├── GIT-MANAGER-RU.bat # Основное меню (русский)
-│   └── git-scripts/       # Скрипты Git-операций
-└── en/
-    ├── GIT-MANAGER-EN.bat # Основное меню (английский)
-    └── git-scripts/       # Скрипты Git-операций
-```
-
-</details>
-
----
 
 ## ☕ Поддержать разработчика
 

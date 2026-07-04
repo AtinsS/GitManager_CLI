@@ -130,32 +130,6 @@ git clone https://github.com/AtinsS/GitManager_CLI.git
 
 ---
 
-## 📂 Project Structure
-
-<details>
-<summary><b>Show structure</b></summary>
-
-```
-GitManager/
-├── GIT-MANAGER.BAT        # Entry point (auto-detect language)
-├── gitmanager.bat         # Wrapper for PATH launch
-├── install.bat            # Add to PATH
-├── uninstall.bat          # Remove from PATH
-├── cfg/
-│   ├── git_repos.cfg      # Repository list (Name;Path;URL;Host)
-│   └── groups.cfg         # Groups (GroupName;repo1;repo2;...)
-├── ru/
-│   ├── GIT-MANAGER-RU.bat # Main menu (Russian)
-│   └── git-scripts/       # Git operation scripts
-└── en/
-    ├── GIT-MANAGER-EN.bat # Main menu (English)
-    └── git-scripts/       # Git operation scripts
-```
-
-</details>
-
----
-
 ## ☕ Support the Developer
 
 If **Git Manager** saved you time:
