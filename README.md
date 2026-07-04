@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="main/icon.png" alt="Git Manager Logo" width="128">
+  <img src="main/icon.png" alt="Git Manager Logo" width="800">
 </p>
 
 > **Git without pain. Without commands. Without extra steps.**
