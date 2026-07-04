@@ -1,4 +1,6 @@
-# 🚀 Git Manager CLI
+<p align="center">
+  <img src="main/icon.png" alt="Git Manager Logo" width="128">
+</p>
 
 > **Git без боли. Без команд. Без лишних действий.**
 
